@@ -10,8 +10,12 @@ phases:
     runtime-versions:
       nodejs: 14
     commands:
+      - pwd
+      - ls -la
       - echo Installing source NPM dependencies...
-      - cd aws-devsecops/frontend
+      - cd frontend
+      - pwd
+      - ls -la
       - npm install
   pre_build:
     commands:
@@ -22,7 +26,7 @@ phases:
   build:
     commands:
       - echo Build started on `date`
-      - cd aws-devsecops/frontend
+      - cd frontend
       - npm run build
       - docker build -t my-app .
       - docker tag my-app:latest $AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/my-app:latest
