@@ -60,7 +60,7 @@ The root module imports and wires all submodules with customizable variables :
 
 ```
 module "ecs" {
-  source = "../ecs"
+  source = "./ecs"
   cluster_name = var.cluster_name
   ...
 }
