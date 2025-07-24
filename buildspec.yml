@@ -6,16 +6,19 @@ env:
     AWS_ACCOUNT_ID: "512742310782"
 
 phases:
+  install:
+    runtime-versions:
+      nodejs: 14
+    commands:
+      - echo Installing source NPM dependencies...
+      - npm install
   pre_build:
     commands:
-      - echo AWS_ACCOUNT_ID is $AWS_ACCOUNT_ID
-      - echo AWS_REGION is $AWS_REGION
       - echo Logging in to Amazon ECR...
       - aws ecr get-login-password --region $AWS_REGION | docker login --username AWS --password-stdin $AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com
   build:
     commands:
       - echo Build started on `date`
-      - npm install
       - npm run build
       - docker build -t my-app .
       - docker tag my-app:latest $AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/my-app:latest
