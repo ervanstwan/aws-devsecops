@@ -10,12 +10,8 @@ phases:
     runtime-versions:
       nodejs: 14
     commands:
-      - echo "Install phase working directory:"
-      - pwd
-      - ls -la
-      - cd $CODEBUILD_SRC_DIR/frontend
-      - pwd
-      - ls -la
+      - echo Installing source NPM dependencies...
+      - cd frontend
       - npm install
   pre_build:
     commands:
@@ -23,13 +19,11 @@ phases:
       - aws ecr get-login-password --region $AWS_REGION | docker login --username AWS --password-stdin $AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com
   build:
     commands:
-      - echo "Build phase working directory:"
-      - pwd
-      - ls -la
-      - cd $CODEBUILD_SRC_DIR/frontend
-      - pwd
-      - ls -la
+      - echo Build started on `date`
+      - cd frontend
       - npm run build
+      - cd ..
+      - cp -r frontend/build ./build
       - docker build -t my-app .
       - docker tag my-app:latest $AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/my-app:latest
   post_build:
