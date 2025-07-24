@@ -1,10 +1,6 @@
 version: 0.2
 
 phases:
-  install:
-    runtime-versions:
-      docker: 19
-      nodejs: 14
   pre_build:
     commands:
       - echo Logging in to Amazon ECR...
@@ -22,4 +18,5 @@ phases:
       - docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/my-app:latest
 
 artifacts:
-  files: []
+  files:
+    - '**/*'
