@@ -11,7 +11,6 @@ phases:
       nodejs: 14
     commands:
       - echo Installing source NPM dependencies...
-      - cd frontend
       - npm install
   pre_build:
     commands:
@@ -20,10 +19,8 @@ phases:
   build:
     commands:
       - echo Build started on `date`
-      - cd frontend
       - npm run build
-      - cd ..
-      - cp -r frontend/build ./build
+      - cp -r build ./build 
       - docker build -t my-app .
       - docker tag my-app:latest $AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/my-app:latest
   post_build:
