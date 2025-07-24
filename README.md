@@ -1,27 +1,27 @@
 
 # 🚀 AWS DevSecOps Terraform Modules
 
-This repository contains reusable Terraform modules to provision an AWS DevSecOps infrastructure including:
+This repository contains reusable Terraform modules to provision an AWS DevSecOps infrastructure include :
 
-- 🐳 **ECS Module:** Manage ECS clusters, task definitions, services, and networking  
-- 🔥 **ALB Module:** Application Load Balancer with listeners, target groups, and security groups  
-- 🛠️ **CodeBuild Module:** Build environment for CI/CD with IAM roles and environment variables  
-- 📦 **CodePipeline Module:** Multi-stage CI/CD pipeline integrating source control, build, and deployment  
+- 🐳 ECS Module ==> Manage ECS clusters, task definitions, services, and networking  
+- 🔥 ALB Module ==> Application Load Balancer with listeners, target groups, and security groups  
+- 🛠️ CodeBuild Module ==> Build environment for CI/CD with IAM roles and environment variables  
+- 📦 CodePipeline Module ==> Multi-stage CI/CD pipeline integrating source control, build, and deployment  
 
 
 ## 🗂️ Module Structure
 
-Each module is self-contained with:
+Each module is self contained with :
 
-- `main.tf`: Resource definitions  
-- `variables.tf`: Input variables with descriptions  
-- `outputs.tf`: Outputs for integration  
+- main.tf ==> Resource definitions  
+- variables.tf ==> Input variables with descriptions  
+- outputs.tf ==> Outputs for integration  
 
 ## ⚙️ Setup Instructions
 
-1. **Configure AWS CLI** with appropriate credentials  
-2. **Edit `root/variables.tf`** to customize deployment parameters  
-3. Run Terraform commands:
+1. Configure AWS CLI with appropriate credentials  
+2. Edit root/variables.tf to customize deployment parameters  
+3. Run Terraform commands :
 
 ```
 terraform init
@@ -32,7 +32,7 @@ terraform apply
 Folder Structure
 
 ```
-aws-devsecops-test/
+aws-devsecops/
 ├── ecs/
 │   ├── main.tf
 │   ├── variables.tf
@@ -56,7 +56,8 @@ aws-devsecops-test/
 ```
 
 📦 Example Usage
-The root module imports and wires all submodules with customizable variables:
+The root module imports and wires all submodules with customizable variables :
+
 ```
 module "ecs" {
   source = "../ecs"
@@ -66,7 +67,7 @@ module "ecs" {
 ```
 
 📝 Buildspec Example
-Create a buildspec.yml for CodeBuild like:
+Create a buildspec.yml for CodeBuild like :
 ```
 version: 0.2
 
@@ -88,11 +89,11 @@ artifacts:
 🏗️ Architecture Diagram
 
 ```
-+----------------------+        +------------------------+
-|                      |        |                        |
++-----------------------+        +------------------------+
+|                       |        |                        |
 |  GitHub / Source Repo |------->|  AWS CodePipeline      |
-|                      |        |                        |
-+----------------------+        +-----------+------------+
+|                       |        |                        |
++-----------------------+        +-----------+------------+
                                          |
                                          v
                              +------------------------+
@@ -102,11 +103,11 @@ artifacts:
                              +-----------+------------+
                                          |
                                          v
-                             +------------------------+
-                             |                        |
+                             +-------------------------+
+                             |                         |
                              |  ECS Cluster + Service  |
-                             |  (Run containers)      |
-                             +-----------+------------+
+                             |  (Run containers)       |
+                             +-----------+-------------+
                                          |
                                          v
                              +------------------------+
@@ -127,3 +128,6 @@ artifacts:
 For questions or issues, please contact:
 
 DevOps Team - [ervanstwan@gmail.com]
+
+Made with ❤️ by Ervan Setiawan
+GitHub: github.com/ervanstwan
