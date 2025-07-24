@@ -5,12 +5,9 @@ service_role_arn       = "arn:aws:iam::512742310782:role/ecsTaskExecutionRole"
 codebuild_project_name = "my-codebuild-project"
 project_description    = "My CodeBuild project"
 source_location        = "https://github.com/ervanstwan/aws-devsecops"
-buildspec            = "buildspec.yml"
-tags                 = {
+buildspec              = "buildspec.yml"
+project_name           = "my-codebuild-project"
+tags = {
   Environment = "dev"
   ManagedBy   = "terraform"
 }
-
-
-
-

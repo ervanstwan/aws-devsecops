@@ -29,5 +29,12 @@ resource "aws_codebuild_project" "this" {
     type = "NO_ARTIFACTS"
   }
 
+  logs_config {
+    cloudwatch_logs {
+      group_name  = "/aws/codebuild/${var.project_name}"
+      stream_name = "build-log"
+      status      = "ENABLED"
+    }
+  }
   tags = var.tags
 }

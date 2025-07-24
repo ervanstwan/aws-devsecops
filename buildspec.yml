@@ -1,8 +1,15 @@
 version: 0.2
 
+env:
+  variables:
+    AWS_REGION: "ap-southeast-1"
+    AWS_ACCOUNT_ID: "512742310782"
+
 phases:
   pre_build:
     commands:
+      - echo AWS_ACCOUNT_ID is $AWS_ACCOUNT_ID
+      - echo AWS_REGION is $AWS_REGION
       - echo Logging in to Amazon ECR...
       - aws ecr get-login-password --region $AWS_REGION | docker login --username AWS --password-stdin $AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com
   build:

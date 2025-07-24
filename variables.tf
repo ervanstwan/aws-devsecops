@@ -10,6 +10,11 @@ variable "task_family" {
   default     = "ervan_task"
 }
 
+variable "project_name" {
+  description = "Project name for CodeBuild and other resources"
+  type        = string
+}
+
 variable "codebuild_project_name" {
   description = "CodeBuild project name"
   type        = string
