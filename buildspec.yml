@@ -20,7 +20,6 @@ phases:
     commands:
       - echo Build started on `date`
       - npm run build
-      - cp -r build ./build 
       - docker build -t my-app .
       - docker tag my-app:latest $AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/my-app:latest
   post_build:
