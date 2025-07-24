@@ -10,18 +10,12 @@ phases:
     runtime-versions:
       nodejs: 14
     commands:
-      - pwd
-      - ls -la
       - echo Installing source NPM dependencies...
       - cd frontend
-      - pwd
-      - ls -la
       - npm install
   pre_build:
     commands:
       - echo Logging in to Amazon ECR...
-      - echo AWS_ACCOUNT_ID=$AWS_ACCOUNT_ID
-      - echo AWS_REGION=$AWS_REGION
       - aws ecr get-login-password --region $AWS_REGION | docker login --username AWS --password-stdin $AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com
   build:
     commands:
