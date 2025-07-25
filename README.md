@@ -49,9 +49,19 @@ aws-devsecops/
 │   ├── main.tf
 │   ├── variables.tf
 │   └── outputs.tf
+└── public/
+│   └── index.html
+└── src/
+│   ├── App.js
+│   └── index.js
 └── root/
 │   ├── main.tf
 │   └── variables.tf
+│   └── iam.tf
+│   └── outputs.tf
+│   └── package.json
+│   └── README.md
+│   └── terraform.tfvars
 └── buildspec.yml
 ```
 

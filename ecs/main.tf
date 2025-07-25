@@ -47,9 +47,9 @@ resource "aws_ecs_task_definition" "this" {
       logConfiguration = {
         logDriver = "awslogs"
         options = {
-          "awslogs-group"         = var.log_group_name
-          "awslogs-region"        = var.region
-          "awslogs-stream-prefix" = var.log_stream_prefix
+          "awslogs-group"         = "/ecs/ervan-logs"
+          "awslogs-region"        = "ap-southeast-1"
+          "awslogs-stream-prefix" = "ecs"
         }
       }
     }
@@ -97,4 +97,10 @@ resource "aws_ecs_service" "this" {
   depends_on = [aws_iam_role_policy_attachment.ecs_task_execution_policy]
   
   tags = var.tags
+}
+
+resource "aws_cloudwatch_log_group" "ecs" {
+  name              = var.log_group_name
+  retention_in_days = 7
+  tags              = var.tags
 }

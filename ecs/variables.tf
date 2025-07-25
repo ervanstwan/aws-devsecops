@@ -72,10 +72,6 @@ variable "deployment_maximum_percent" {
   default = 200
 }
 
-variable "log_group_name" {
-  default = "/ecs/ervan-logs"
-}
-
 variable "log_stream_prefix" {
   default = "ecs"
 }
@@ -95,4 +91,10 @@ variable "container_environment" {
 variable "desired_count" {
   type    = number
   default = 1
+}
+
+variable "log_group_name" {
+  type        = string
+  description = "CloudWatch log group name for ECS logs"
+  default     = "/ecs/ervan-logs"  
 }

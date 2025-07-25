@@ -18,13 +18,13 @@ resource "aws_codebuild_project" "this" {
     }
 
     environment_variable {
-    name  = "AWS_ACCOUNT_ID"
-    value = "512742310782" 
-  }
+      name  = "AWS_ACCOUNT_ID"
+      value = "512742310782"
+    }
   }
   source {
     type      = "GITHUB"
     location  = "https://github.com/ervanstwan/aws-devsecops"
     buildspec = "buildspec.yml"
-  } 
+  }
 }
